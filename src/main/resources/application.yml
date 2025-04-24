@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: cf-client-demo
+cf:
+  api-host:
+  api-port: 443
+  secure: true
+  skip-ssl-validation: false
+  uaa:
+    client-id:
+    client-secret:
