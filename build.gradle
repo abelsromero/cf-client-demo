@@ -1,0 +1,40 @@
+buildscript {
+	ext {
+		cfJavaClientVersion = "5.12.2.RELEASE"
+		springCloudAppBrokerVersion = "2.3.1"
+	}
+}
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.3.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+//	implementation "org.springframework.cloud:spring-cloud-starter-app-broker-cloudfoundry:${springCloudAppBrokerVersion}"
+//	implementation "org.springframework.cloud:spring-cloud-starter-app-broker-logging:${springCloudAppBrokerVersion}"
+	implementation "org.cloudfoundry:cloudfoundry-client-reactor:${cfJavaClientVersion}"
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
